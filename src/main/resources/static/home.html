@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Home</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="navbar">
+    <div class="system-name">Postal System</div>
+    <div class="user-info">
+        <span id="username">Admin</span>
+        <button id="logout">Logout</button>
+    </div>
+</div>
+<div class="container">
+    <div class="sidebar">
+        <ul>
+            <li><a href="#" id="queryLink">Express Query</a></li>
+            <li><a href="#" id="newExpressLink">New Express</a></li>
+            <li><a href="#" id="updateStatusLink">Update Status</a></li>
+            <li><a href="#" id="historyLink">Parcel History</a></li>
+            <li><a href="#" id="newEncryptedExpressLink">New Encrypted Express</a></li>
+            <li><a href="#" id="auditLogLink">Audit Log</a></li>
+        </ul>
+    </div>
+    <div class="content" id="content">
+        <h1>Welcome to Postal System</h1>
+        <p>Select an option from the menu to get started.</p>
+        <div class="form-container" id="newExpressForm" style="display: none;">
+            <h2>New Express Form</h2>
+            <form id="expressForm" method="POST">
+                <label for="sender">Sender:</label>
+                <input type="text" id="sender" name="sender" required><br>
+                <label for="receiver">Receiver:</label>
+                <input type="text" id="receiver" name="receiver" required><br>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <div class="form-container" id="newEncryptedExpressForm" style="display: none;">
+            <h2>New Encrypted Express Form</h2>
+            <form id="encryptedExpressForm" method="POST">
+                <label for="sender">Sender:</label>
+                <input type="text" id="encryptedSender" name="sender" required><br>
+                <label for="receiver">Receiver:</label>
+                <input type="text" id="encryptedReceiver" name="receiver" required><br>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <div id="queryResults" style="display: none;">
+            <h2>All Parcels</h2>
+            <table>
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Sender</th>
+                    <th>Receiver</th>
+                    <th>Status</th>
+                    <th>Location</th>
+                    <th>Created Time</th>
+                    <th>Last Modified Time</th>
+                    <th>Completed Time</th>
+                    <th>QR Code</th>
+                    <th>History</th>
+                </tr>
+                </thead>
+                <tbody id="parcelTableBody"></tbody>
+            </table>
+        </div>
+        <div class="form-container" id="updateStatusForm" style="display: none;">
+            <h2>Update Parcel Status</h2>
+            <form id="statusForm" method="POST">
+                <label for="parcelId">Parcel ID:</label>
+                <input type="text" id="parcelId" name="parcelId" required><br>
+                <label for="newStatus">New Status:</label>
+                <select id="newStatus" name="newStatus" required>
+                    <option value="PICKUP">PICKUP</option>
+                    <option value="SORTING_LOCAL">SORTING_LOCAL</option>
+                    <option value="IN_TRANSIT">IN_TRANSIT</option>
+                    <option value="SORTING_DESTINATION">SORTING_DESTINATION</option>
+                    <option value="OUT_FOR_DELIVERY">OUT_FOR_DELIVERY</option>
+                    <option value="DELIVERED">DELIVERED</option>
+                </select><br>
+                <button type="submit">Update Status</button>
+            </form>
+        </div>
+        <div class="form-container" id="parcelHistory" style="display: none;">
+            <h2>Parcel History</h2>
+            <form id="historyForm">
+                <label for="historyParcelId">Parcel ID:</label>
+                <input type="text" id="historyParcelId" name="historyParcelId" required>
+                <button type="button" id="queryHistoryButton">Query</button>
+            </form>
+            <div id="historyResults"></div>
+        </div>
+        <div id="auditLogResults" style="display: none;">
+            <h2>Audit Log</h2>
+            <table>
+                <thead>
+                <tr>
+                    <th>ParcelId</th>
+                    <th>Operation Type</th>
+                    <th>Timestamp</th>
+                    <th>Details</th>
+                </tr>
+                </thead>
+                <tbody id="auditLogTableBody"></tbody>
+            </table>
+        </div>
+        <div id="chainHistoryResults" style="display: none;">
+            <h2>AuditChain History</h2>
+            <div id="chainHistoryDetails"></div>
+        </div>
+    </div>
+</div>
+
+<div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <div class="modal-content">
+        <img id="modalImg" src="" alt="QR Code">
+    </div>
+</div>
+
+<script src="js/home.js"></script>
+</body>
+</html>

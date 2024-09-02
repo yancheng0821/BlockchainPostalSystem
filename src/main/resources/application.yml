@@ -1,0 +1,34 @@
+fabric:
+  orgs:
+    org1:
+      walletDirectory: wallet
+      networkConfigPath: connection.json
+      certificatePath: crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/signcerts/Admin@org1.example.com-cert.pem
+      privateKeyPath: crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/keystore/8a345361e5076fe6543eebf8d1b88f89b3129f46ad0c67f35aabeb4078031c80_sk
+      mspid: Org1MSP
+      username: Admin
+      channelName: mychannel
+      contracts:
+        mycc:
+          contractName: mycc
+        mycc2:
+          contractName: encryptionCC
+        mycc3:
+          contractName: auditCC2
+    org2:
+      walletDirectory: wallet
+      networkConfigPath: connection.json
+      certificatePath: crypto-config/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp/signcerts/Admin@org2.example.com-cert.pem
+      privateKeyPath: crypto-config/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp/keystore/1d7d248dc548a70ec4b908971b8d24e2bc601f141e95995af0563fe75a2ef33d_sk
+      mspid: Org2MSP
+      username: Admin
+      channelName: mychannel
+      contracts:
+        mycc:
+          contractName: mycc
+        mycc2:
+          contractName: encryptionCC
+        mycc3:
+          contractName: auditCC2
+
+  algorithm: DES
